@@ -36,14 +36,12 @@ app.get('/', async (req, res) => {
 app.get('/organizations', async (req, res) => {
     const title = 'Organizations';
     const organizations = await getOrganizations();
-    console.log('Organizations:', organizations);
     res.render('organizations', { title, organizations });
 });
 // Projects
 app.get('/projects', async (req, res) => {
     const title = 'Projects';
     const projects = await getProjects();
-    console.log('Projects:', projects);
     res.render('projects', { title, projects });
 });
 // Categories
