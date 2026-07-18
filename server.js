@@ -2,9 +2,7 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './src/models/db.js';
-import { getOrganizations } from './src/models/organizations.js';
-import { getProjects } from './src/models/projects.js';
-import { getCategories } from './src/models/categories.js';
+import { router } from './src/routes.js';
 import { title } from 'process';
 import { stat } from 'fs';
 
@@ -42,37 +40,10 @@ app.use((req, res, next) => {
     next();
 })
 
-// ------------------ Pages ---------------------------
-// Home
-app.get('/', async (req, res) => {
-    const title = 'Home';
-    res.render('home', { title });
-});
-// Organizations
-app.get('/organizations', async (req, res) => {
-    const title = 'Organizations';
-    const organizations = await getOrganizations();
-    res.render('organizations', { title, organizations });
-});
-// Projects
-app.get('/projects', async (req, res) => {
-    const title = 'Projects';
-    const projects = await getProjects();
-    res.render('projects', { title, projects });
-});
-// Categories
-app.get('/categories', async (req, res) => {
-    const title = 'Categories';
-    const categories = await getCategories();
-    res.render('categories', { title, categories });
-});
+// Use the imported router to handle routes
+app.use(router);
 
-// Test route for 500 errors
-app.get('/test-error', (req, res, next) => {
-    const err = new Error('This is a test error!')
-    err.status = 500;
-    next(err);
-});
+// --------------------------- Middleware ---------------------------
 
 // Catch-all routes for 404 errors
 app.use((req, res, next) => {
