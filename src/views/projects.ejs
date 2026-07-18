@@ -7,8 +7,8 @@
         <ul>
             <% projects.forEach(project=> { %>
                 <li><strong>
-                        <%= project.title %>
-                    </strong>:
+                        <span><a href="/project/<%= project.project_id %>"><%= project.title %></a> - <a href="/organization/<%= project.organization_id %>"><%= project.organization_name %></a></span>
+                    </strong>
                     <p> <%= project.description %></p>
                     <p> <%= project.location %> - <span> <%= project.project_date %></span></p>
                 </li>
