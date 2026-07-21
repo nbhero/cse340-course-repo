@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { urlencoded } from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { testConnection } from './src/models/db.js';
@@ -39,6 +39,10 @@ app.use((req, res, next) => {
     res.locals.NODE_ENV = NODE_ENV;
     next();
 })
+
+// Allow express to receive and process POST data
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // Use the imported router to handle routes
 app.use(router);

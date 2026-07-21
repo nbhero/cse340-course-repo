@@ -132,6 +132,78 @@ footer {
     font-size: 0.95rem;
 }
 
+form {
+    max-width: 520px;
+    margin-top: 24px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    font: inherit;
+    color: var(--text);
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+    border-color: rgba(37, 99, 235, 0.35);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+form button[type="submit"] {
+    font: inherit;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+form button[type="submit"]:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(37, 99, 235, 0.32);
+}
+
+form button[type="submit"]:active {
+    transform: translateY(0);
+}
+
 @media (max-width: 700px) {
     body {
         padding: 16px;

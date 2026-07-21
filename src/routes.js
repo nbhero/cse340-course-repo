@@ -6,7 +6,8 @@ import { homepage } from './controllers/index.js';
 import {
     organizationsPage,
     organizationDetailsPage,
-    newOrganizationForm
+    newOrganizationForm,
+    processFormSubmission
 } from './controllers/organizations.js';
 // --------------------------- Project Routes ---------------------------
 import {
@@ -30,6 +31,8 @@ router.get('/', homepage);
 // Organizations
 router.get('/organizations', organizationsPage);
 router.get('/organization/:id', organizationDetailsPage); // Route for organization details page
+router.get('/new-organization', newOrganizationForm);
+router.post('/new-organization', processFormSubmission);
 // Projects
 router.get('/projects', projectsPage);
 router.get('/project/:id', projectDetailsPage);
