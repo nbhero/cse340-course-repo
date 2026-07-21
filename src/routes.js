@@ -1,13 +1,25 @@
 import express from 'express';
 
+// --------------------------- Homepage Routes ---------------------------
 import { homepage } from './controllers/index.js';
-import { organizationsPage } from './controllers/organizations.js';
-import { categoriesPage } from './controllers/categories.js';
-import { projectsPage } from './controllers/projects.js';
+// --------------------------- Organization Routes ---------------------------
+import {
+    organizationsPage,
+    organizationDetailsPage,
+    newOrganizationForm
+} from './controllers/organizations.js';
+// --------------------------- Project Routes ---------------------------
+import {
+    projectsPage,
+    projectDetailsPage
+ } from './controllers/projects.js';
+// --------------------------- Category Routes ---------------------------
+import {
+    categoriesPage,
+    categoryDetailsPage
+} from './controllers/categories.js';
+// --------------------------- Error Routes ---------------------------
 import { testErrorPage } from './controllers/errors.js';
-import { organizationDetailsPage } from './controllers/organizations.js';
-import { projectDetailsPage } from './controllers/projects.js';
-import { categoryDetailsPage } from './controllers/categories.js';
 
 export const router = express.Router();
 
