@@ -5,9 +5,12 @@ import { testConnection } from './src/models/db.js';
 import { router } from './src/routes.js';
 import { title } from 'process';
 import { stat } from 'fs';
+import session from 'express-session';
+import { flash } from './src/middleware/flash.js';
 
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
 const PORT = process.env.PORT || 3000;
+const SESSION_SECRET = process.env.SESSION_SECRET;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -22,6 +25,17 @@ app.set('view engine', 'ejs');
 
 // Tell Express where to find your templates
 app.set('views', path.join(__dirname, 'src/views'));
+
+// Set up session management
+app.use(session({
+    secret: SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 } // Session expires after an hour
+}));
+
+// Use flash message middleware
+app.use(flash);
 
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
