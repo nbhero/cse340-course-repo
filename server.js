@@ -6,7 +6,7 @@ import { router } from './src/routes.js';
 import { title } from 'process';
 import { stat } from 'fs';
 import session from 'express-session';
-import { flash } from './src/middleware/flash.js';
+import flash from './src/middleware/flash.js';
 
 const NODE_ENV = process.env.NODE_ENV?.toLowerCase() || 'production';
 const PORT = process.env.PORT || 3000;
