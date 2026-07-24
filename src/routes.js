@@ -7,7 +7,8 @@ import {
     organizationsPage,
     organizationDetailsPage,
     newOrganizationForm,
-    processFormSubmission
+    processFormSubmission,
+    organizationValidation
 } from './controllers/organizations.js';
 // --------------------------- Project Routes ---------------------------
 import {
@@ -32,7 +33,7 @@ router.get('/', homepage);
 router.get('/organizations', organizationsPage);
 router.get('/organization/:id', organizationDetailsPage); // Route for organization details page
 router.get('/new-organization', newOrganizationForm);
-router.post('/new-organization', processFormSubmission);
+router.post('/new-organization',organizationValidation, processFormSubmission);
 // Projects
 router.get('/projects', projectsPage);
 router.get('/project/:id', projectDetailsPage);
