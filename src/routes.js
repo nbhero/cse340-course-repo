@@ -8,7 +8,9 @@ import {
     organizationDetailsPage,
     newOrganizationForm,
     processFormSubmission,
-    organizationValidation
+    organizationValidation,
+    editOrganizationForm,
+    editOrganizationSubmission
 } from './controllers/organizations.js';
 // --------------------------- Project Routes ---------------------------
 import {
@@ -33,7 +35,9 @@ router.get('/', homepage);
 router.get('/organizations', organizationsPage);
 router.get('/organization/:id', organizationDetailsPage); // Route for organization details page
 router.get('/new-organization', newOrganizationForm);
-router.post('/new-organization',organizationValidation, processFormSubmission);
+router.post('/new-organization', organizationValidation, processFormSubmission);
+router.get('/edit-organization/:id', editOrganizationForm);
+router.post('/edit-organization/:id', organizationValidation, editOrganizationSubmission);
 // Projects
 router.get('/projects', projectsPage);
 router.get('/project/:id', projectDetailsPage);
