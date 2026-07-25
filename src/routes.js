@@ -18,7 +18,9 @@ import {
     projectDetailsPage,
     showNewProjectForm,
     processNewProjectForm,
-    projectValidation
+    projectValidation,
+    showEditProjectForm,
+    processEditProjectForm
  } from './controllers/projects.js';
 // --------------------------- Category Routes ---------------------------
 import {
@@ -52,6 +54,9 @@ router.get('/project/:id', projectDetailsPage);
 router.get('/new-project', showNewProjectForm);
 // Route to handle new project form submission
 router.post('/new-project', projectValidation, processNewProjectForm);
+// Routes for the edit project form and its submission
+router.get('/edit-project/:id', showEditProjectForm);
+router.post('/edit-project/:id', projectValidation, processEditProjectForm);
 
 // Categories
 router.get('/categories', categoriesPage);
