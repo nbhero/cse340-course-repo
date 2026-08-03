@@ -42,7 +42,9 @@ import {
     processUserRegistrationForm,
     showLoginForm,
     processLoginForm,
-    processLogout
+    processLogout,
+    requireLogin,
+    showDashboard
 } from './controllers/users.js';
 
 
@@ -93,6 +95,9 @@ router.post('/register', processUserRegistrationForm);
 router.get('/login', showLoginForm);
 router.post('/login', processLoginForm);
 router.get('/logout', processLogout);
+
+// Dashboard
+router.get('/dashboard', requireLogin, showDashboard);
 
 // Test route for 500 errors
 router.get('/test-error', testErrorPage);
