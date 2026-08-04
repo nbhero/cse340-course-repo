@@ -8,12 +8,16 @@
         <ul>
             <% categoryDetails.projects.forEach(project=> { %>
                 <li>
-                    <a href="/project/<%= project.project_id %>"><%= project.title %></a>
+                    <a href="/project/<%= project.project_id %>">
+                        <%= project.title %>
+                    </a>
                 </li>
                 <% }); %>
         </ul>
-        <p>
-            <a href="/edit-category/<%= categoryDetails.category_id %>">Edit Category</a>
-        </p>
+        <% if (user && user.role_name==='admin' ) { %>
+            <p>
+                <a href="/edit-category/<%= categoryDetails.category_id %>">Edit Category</a>
+            </p>
+            <% } %>
     </main>
     <%- include('partials/footer') %>

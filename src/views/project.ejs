@@ -33,9 +33,11 @@
                 </li>
                 <% }); %>
         </ul>
-        <a href="/assign-categories/<%= projectDetails.project_id %>">Edit Categories</a>
-        <p>
-            <a href="/edit-project/<%= projectDetails.project_id %>">Edit Project</a>
-        </p>
+        <% if (user && user.role_name==='admin' ) { %>
+            <a href="/assign-categories/<%= projectDetails.project_id %>">Edit Categories</a>
+            <p>
+                <a href="/edit-project/<%= projectDetails.project_id %>">Edit Project</a>
+            </p>
+            <% } %>
     </main>
     <%- include('partials/footer') %>
