@@ -36,6 +36,8 @@ import {
 } from './controllers/categories.js';
 // --------------------------- Error Routes ---------------------------
 import { testErrorPage } from './controllers/errors.js';
+// --------------------------- Volunteer Routes ---------------------------
+import { addVolunteer, removeVolunteer } from './controllers/volunteers.js';
 // --------------------------- User Routes ---------------------------
 import {
     showUserRegistrationForm,
@@ -103,6 +105,10 @@ router.get('/dashboard', requireLogin, showDashboard);
 
 // Users
 router.get('/users', requireRole('admin'), usersPage);
+
+// Volunteers
+router.get('/volunteer/:projectId', requireLogin, addVolunteer);
+router.get('/remove-volunteer/:projectId', requireLogin, removeVolunteer);
 
 // Test route for 500 errors
 router.get('/test-error', testErrorPage);

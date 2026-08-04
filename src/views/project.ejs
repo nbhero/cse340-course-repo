@@ -39,5 +39,14 @@
                 <a href="/edit-project/<%= projectDetails.project_id %>">Edit Project</a>
             </p>
             <% } %>
+
+        <% if (isLoggedIn) { %>
+            <% if (isVolunteering) { %>
+                <p>You are volunteering for this project.</p>
+                <a href="/remove-volunteer/<%= projectDetails.project_id %>">Remove yourself as a volunteer</a>
+                <% } else { %>
+                    <a href="/volunteer/<%= projectDetails.project_id %>">Volunteer for this project</a>
+                    <% } %>
+                        <% } %>
     </main>
     <%- include('partials/footer') %>

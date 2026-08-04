@@ -15,6 +15,22 @@
             <a href="/users">View All Users</a>
             <% } %>
 
+        <h2>Your Volunteer Projects</h2>
+        <% if (volunteeredProjects.length===0) { %>
+            <p>You have not volunteered for any projects yet.</p>
+            <% } else { %>
+                <ul>
+                    <% volunteeredProjects.forEach(project=> { %>
+                        <li>
+                            <a href="/project/<%= project.project_id %>">
+                                <%= project.title %>
+                            </a>
+                            <a href="/remove-volunteer/<%= project.project_id %>?redirect=dashboard">Remove</a>
+                        </li>
+                        <% }); %>
+                </ul>
+                <% } %>
+
     </main>
 
     <%- include('partials/footer') %>

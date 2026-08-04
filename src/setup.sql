@@ -102,3 +102,17 @@ CREATE TABLE users (
     role_id INTEGER REFERENCES roles(role_id),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- ========================================
+-- Volunteer Table (junction table)
+-- Tracks which users have volunteered for which service projects.
+-- A user can volunteer for many projects, and a project can have
+-- many volunteers.
+-- ========================================
+
+CREATE TABLE volunteer (
+    user_id INT NOT NULL REFERENCES users(user_id) ON DELETE CASCADE,
+    project_id INT NOT NULL REFERENCES service_project(project_id) ON DELETE CASCADE,
+    volunteered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (user_id, project_id)
+);
